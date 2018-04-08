@@ -7,10 +7,10 @@ using Takadam.Tools;
 
 namespace Takadam.Models
 {
-    public class member
+    public class Member
     {
         public int id { get; set; }
-        public string pub_id { get; set; }
+        public string name { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string password { get; set; }
@@ -21,20 +21,18 @@ namespace Takadam.Models
         public DateTime date { get; set; }
         public DateTime last_connection { get; set; }
 
-
-        public static List<member> GetAll()
+        public static List<Member> GetAll()
         {
             string query = @"SELECT * from member";
             Connection cs = new Connection();
             Dictionary<string, object> param = new Dictionary<string, object>();
-            List<member> list = new List<member>();
-
+            List<Member> list = new List<Member>();
 
             MySqlDataReader reader = cs.Select(query, param);
-            list = new List<member>();
+            list = new List<Member>();
             while (reader.Read())
             {
-                member item = new member();
+                Member item = new Member();
 
                 if (!reader.IsDBNull(reader.GetOrdinal("id")))
                     item.id = reader.GetInt32(reader.GetOrdinal("id"));
@@ -73,19 +71,19 @@ namespace Takadam.Models
             return list;
         }
 
-        public static member GetById(int id)
+        public static Member GetById(int id)
         {
-            member item = null;
+            Member item = null;
             string query = @"SELECT * from member where id = @id";
             Connection cs = new Connection();
             Dictionary<string, object> param = new Dictionary<string, object>();
-            List<member> list = new List<member>();
+            List<Member> list = new List<Member>();
             param.Add("id", id);
 
             MySqlDataReader reader = cs.Select(query, param);
             while (reader.Read())
             {
-                item = new member();
+                item = new Member();
 
                 if (!reader.IsDBNull(reader.GetOrdinal("id")))
                     item.id = reader.GetInt32(reader.GetOrdinal("id"));
@@ -124,20 +122,20 @@ namespace Takadam.Models
             return item;
         }
 
-        public static member GetByEmailAndPassword(string email, string password)
+        public static Member GetByEmailAndPassword(string email, string password)
         {
-            member item = null;
+            Member item = null;
             string query = @"SELECT * from member where email = @email and password = @password";
             Connection cs = new Connection();
             Dictionary<string, object> param = new Dictionary<string, object>();
-            List<member> list = new List<member>();
+            List<Member> list = new List<Member>();
             param.Add("email", email);
             param.Add("password", password);
 
             MySqlDataReader reader = cs.Select(query, param);
             while (reader.Read())
             {
-                item = new member();
+                item = new Member();
 
                 if (!reader.IsDBNull(reader.GetOrdinal("id")))
                     item.id = reader.GetInt32(reader.GetOrdinal("id"));
@@ -176,7 +174,7 @@ namespace Takadam.Models
             return item;
         }
 
-        public static int Add(member m)
+        public static int Add(Member m)
         {
             int t = 0;
             string query = @"INSERT INTO member (lastname, username, password, phone, email, address, date, last_connection, country) " +

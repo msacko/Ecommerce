@@ -152,26 +152,26 @@ namespace Takadam.Tools
 
         #region [ METHODS ]
 
-        public static member CurrentUser
+        public static Member CurrentUser
         {
             get
             {
                 if (HttpContext.Current.Session["CurrentUser"] == null)
                 {
                     //var m = member.GetById(UserId);
-                    member m = null;
+                    Member m = null;
                     HttpContext.Current.Session["CurrentUser"] = m;
                     return m;
                 }
-                return (member)HttpContext.Current.Session["CurrentUser"];
+                return (Member)HttpContext.Current.Session["CurrentUser"];
             }
         }
 
-        public static member LogOn(String pUsername, String pPsw)
+        public static Member LogOn(String pUsername, String pPsw)
         {
 
             //member userObj = member.GetByUsernameAndPassword(pUsername, pPsw);
-            member userObj = null;
+            Member userObj = null;
 
             //The locationID is required
             if (userObj != null)
