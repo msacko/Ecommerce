@@ -52,7 +52,6 @@ namespace Takadam.Models
         public static List<MemberProduct> GetAll()
         {
             string query = @"SELECT * from memberProduct";
-            Connection cs = new Connection();
             Dictionary<string, object> param = new Dictionary<string, object>();
 
             return get(query, param);

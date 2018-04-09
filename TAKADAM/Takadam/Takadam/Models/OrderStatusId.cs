@@ -43,7 +43,6 @@ namespace Takadam.Models
         public static List<OrderStatusId> GetAll()
         {
             string query = @"SELECT * from orderStatusId";
-            Connection cs = new Connection();
             Dictionary<string, object> param = new Dictionary<string, object>();
 
             return get(query, param);

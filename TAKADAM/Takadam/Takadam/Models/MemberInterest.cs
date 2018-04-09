@@ -45,7 +45,6 @@ namespace Takadam.Models
         public static List<MemberInterest> GetAll()
         {
             string query = @"SELECT * from memberInterest";
-            Connection cs = new Connection();
             Dictionary<string, object> param = new Dictionary<string, object>();
 
             return get(query, param);
