@@ -102,7 +102,8 @@ namespace Takadam.Models
 
         public static List<Product> GetAll()
         {
-            string query = @"SELECT p.*, mp.status as statusAjout, mp.date as dateAjout, m.id as memberId, m.firstname, m.lastname, m.email, m.country as memberCountry from product p inner join memberproduct mp on p.id = mp.productId inner join member m on mp.memberId = m.id";
+            string query = @"SELECT p.*, mp.status as statusAjout, mp.date as dateAjout, m.id as memberId, m.firstname, m.lastname, m.email, m.country as memberCountry 
+                        from product p inner join memberproduct mp on p.id = mp.productId inner join member m on mp.memberId = m.id";
             Dictionary<string, object> param = new Dictionary<string, object>();
 
             return get(query, param);
@@ -123,7 +124,8 @@ namespace Takadam.Models
 
         public static List<Product> GetByCategoryId(int categoryId)
         {
-            string query = @"SELECT p.*, mp.status as statusAjout, mp.date as dateAjout, m.id as memberId, m.firstname, m.lastname, m.email, m.country as memberCountry from product p inner join memberproduct mp on p.id = mp.productId inner join member m on mp.memberId = m.id where p.categoryId = @categoryId";
+            string query = @"SELECT p.*, mp.status as statusAjout, mp.date as dateAjout, m.id as memberId, m.firstname, m.lastname, m.email, m.country as memberCountry 
+                            from product p inner join memberproduct mp on p.id = mp.productId inner join member m on mp.memberId = m.id where p.categoryId = @categoryId";
             Dictionary<string, object> param = new Dictionary<string, object>();
             param.Add("categoryId", categoryId);
 

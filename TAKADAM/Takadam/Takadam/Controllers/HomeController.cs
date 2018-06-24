@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Takadam.Models;
+using Takadam.Models.Model_View;
 
 namespace Takadam.Controllers
 {
@@ -11,7 +12,9 @@ namespace Takadam.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            AccueilModel model = new AccueilModel();
+            model.list_prod = Product.GetAll();
+            return View(model);
         }
 
         public ActionResult About()
