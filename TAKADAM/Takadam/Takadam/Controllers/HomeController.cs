@@ -8,6 +8,7 @@ using Takadam.Models.Model_View;
 
 namespace Takadam.Controllers
 {
+    //Test mamoudou
     public class HomeController : Controller
     {
         public ActionResult Index()
